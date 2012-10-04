@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="theBank" class="jtc.winnie.bank.TheBank" init-method="init"></bean>
+	
+    <bean id="cass1" class="jtc.winnie.terminal.RecycleCassette">
+        <constructor-arg ref="slice1"></constructor-arg>    
+    </bean>
+    
+    <bean id="slice1" class="jtc.winnie.terminal.CashSlice">
+        <constructor-arg value="USD"></constructor-arg>    
+        <constructor-arg value="ONE_HUNDRED"></constructor-arg>
+        <constructor-arg value="10"></constructor-arg>                
+    </bean>    
+
+    <bean id="cass2" class="jtc.winnie.terminal.RecycleCassette">
+        <constructor-arg>
+            <bean class="jtc.winnie.terminal.CashSlice">
+                <constructor-arg value="EUR"></constructor-arg>    
+                <constructor-arg value="FIFTY"></constructor-arg>
+                <constructor-arg value="10"></constructor-arg>                
+            </bean>    
+        </constructor-arg>    
+    </bean>
+
+    
+	<bean id="theATM" class="jtc.winnie.terminal.AtmCashIn">
+		<constructor-arg value="10"></constructor-arg>
+		<constructor-arg ref="theBank"></constructor-arg>
+		
+        <property name="cassettes">
+            <list>
+                <ref bean="cass1" />
+                <ref bean="cass2" />
+                <bean class="jtc.winnie.terminal.CashOutCassette">
+                    <constructor-arg>
+                        <bean class="jtc.winnie.terminal.CashSlice">
+                            <constructor-arg value="UAH"></constructor-arg>    
+                            <constructor-arg value="ONE"></constructor-arg>
+                            <constructor-arg value="101"></constructor-arg>                
+                        </bean>    
+                    </constructor-arg>    
+                </bean>
+                <bean class="jtc.winnie.terminal.CashOutCassette">
+                    <constructor-arg>
+                        <bean class="jtc.winnie.terminal.CashSlice">
+                            <constructor-arg value="UAH"></constructor-arg>    
+                            <constructor-arg value="FIVE"></constructor-arg>
+                            <constructor-arg value="105"></constructor-arg>                
+                        </bean>    
+                    </constructor-arg>    
+                </bean>
+                <bean class="jtc.winnie.terminal.CashOutCassette">
+                    <constructor-arg>
+                        <bean class="jtc.winnie.terminal.CashSlice">
+                            <constructor-arg value="UAH"></constructor-arg>    
+                            <constructor-arg value="TEN"></constructor-arg>
+                            <constructor-arg value="100"></constructor-arg>                
+                        </bean>    
+                    </constructor-arg>    
+                </bean>
+                <bean class="jtc.winnie.terminal.CashOutCassette">
+                    <constructor-arg>
+                        <bean class="jtc.winnie.terminal.CashSlice">
+                            <constructor-arg value="UAH"></constructor-arg>    
+                            <constructor-arg value="FIFTY"></constructor-arg>
+                            <constructor-arg value="100"></constructor-arg>                
+                        </bean>    
+                    </constructor-arg>    
+                </bean>
+                <bean class="jtc.winnie.terminal.CashOutCassette">
+                    <constructor-arg>
+                        <bean class="jtc.winnie.terminal.CashSlice">
+                            <constructor-arg value="UAH"></constructor-arg>    
+                            <constructor-arg value="ONE_HUNDRED"></constructor-arg>
+                            <constructor-arg value="100"></constructor-arg>                
+                        </bean>    
+                    </constructor-arg>    
+                </bean>
+                <bean class="jtc.winnie.terminal.CashOutCassette">
+                    <constructor-arg>
+                        <bean class="jtc.winnie.terminal.CashSlice">
+                            <constructor-arg value="UAH"></constructor-arg>    
+                            <constructor-arg value="FIVE_HUNDRED"></constructor-arg>
+                            <constructor-arg value="100"></constructor-arg>                
+                        </bean>    
+                    </constructor-arg>    
+                </bean>
+                <bean class="jtc.winnie.terminal.CashOutCassette">
+                    <constructor-arg>
+                        <bean class="jtc.winnie.terminal.CashSlice">
+                            <constructor-arg value="UAH"></constructor-arg>    
+                            <constructor-arg value="ONE_THOUSAND"></constructor-arg>
+                            <constructor-arg value="100"></constructor-arg>                
+                        </bean>    
+                    </constructor-arg>    
+                </bean>
+                <bean class="jtc.winnie.terminal.CashOutCassette">
+                    <constructor-arg>
+                        <bean class="jtc.winnie.terminal.CashSlice">
+                            <constructor-arg value="UAH"></constructor-arg>    
+                            <constructor-arg value="FIVE_THOUSAND"></constructor-arg>
+                            <constructor-arg value="100"></constructor-arg>                
+                        </bean>    
+                    </constructor-arg>    
+                </bean>
+            </list>
+        </property>		
+	</bean>
+</beans>

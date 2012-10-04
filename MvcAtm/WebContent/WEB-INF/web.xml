@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>MVC ATM</display-name>
+  <description>ATM as MVC</description>
+  
+  <servlet>
+    <description>dispatcher servlet</description>
+    <display-name>DSMain</display-name>
+    <servlet-name>DSMain</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>DSMain</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+      /WEB-INF/beanconffile.xml
+      <!-- /WEB-INF/spitter-security.xml -->
+      <!-- /WEB-INF/service-context.xml -->
+      <!-- classpath:persistence-context.xml -->
+      <!-- classpath:dataSource-context.xml -->
+    </param-value>
+  </context-param>  
+ 
+  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+</web-app>
